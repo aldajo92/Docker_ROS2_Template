@@ -8,7 +8,9 @@ source ${PROJECT_ROOT}/config_local.sh
 
 docker run -it \
   --name=${DOCKER_CONTAINER_NAME} \
-  --network ${ROS_NETWORK} \
+  --network ${DOCKER_NETWORK} \
   --volume ${PROJECT_ROOT}/ros2_ws:/ros2_ws \
+  --volume /dev:/dev \
+  --privileged \
   --rm \
-  ${DOCKER_IMAGE_NAME} /autostart.sh /bin/bash
+  ${DOCKER_IMAGE_NAME} /bin/bash
